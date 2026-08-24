@@ -3,7 +3,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!--新增移动端视口配置 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<!-- 微信X5内核专属：强制横屏、全屏显示 -->
+<meta name="x5-orientation" content="landscape">
+<meta name="x5-fullscreen" content="true">
+
         
         <title>❤️致黄钰茵的一封情书💖</title>
         <link type="text/css" rel="stylesheet" href="./index_files/default.css">
@@ -477,9 +481,6 @@
         canvasSnow.height = window.innerHeight;
     }
 
-    img.onload = function() {
-        startSakura();
-    }
 
     function stopp() {
         if(staticx) {
