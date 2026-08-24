@@ -147,7 +147,7 @@
             ctx.scale(scale, scale);
             ctx.beginPath();
             ctx.moveTo(0, 0);
-            ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+    	    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
             ctx.closePath();
             ctx.fill();
             ctx.restore();
@@ -162,13 +162,13 @@
             ctx.translate(point.x, point.y);
             ctx.scale(scale, scale);
             ctx.moveTo(0, 0);
-            ctx.lineTo(15, 15);
-            ctx.lineTo(60, 15);
+    	    ctx.lineTo(15, 15);
+    	    ctx.lineTo(60, 15);
             ctx.stroke();
-    
+
             ctx.moveTo(0, 0);
             ctx.scale(0.75, 0.75);
-            ctx.font = "12px 微软雅黑,Verdana";
+            ctx.font = "12px 微软雅黑,Verdana"; // 字号肿么没有用? (ˉ(∞)ˉ)
             ctx.fillText("click here", 23, 16);
             ctx.restore();
         },
@@ -178,18 +178,12 @@
             var w = h = (radius * scale);
             ctx.clearRect(point.x - w, point.y - h, 4 * w, 4 * h);
         },
-        // 修复：距离检测代替getImageData，点击更稳
         hover: function(x, y) {
-            var dx = x - this.cirle.point.x;
-            var dy = y - this.cirle.point.y;
-            var r = this.cirle.radius * this.cirle.scale;
-            // 放大点击热区倍数，视觉不变化，只扩大可点击面积
-            var touchScale = 5; 
-            var touchR = r * touchScale;
-            return (dx*dx + dy*dy) < touchR * touchR;
+            var ctx = this.tree.ctx;
+            var pixel = ctx.getImageData(x, y, 1, 1);
+            return pixel.data[3] == 255
         }
     }
-    
 
     Footer = function(tree, width, height, speed) {
         this.tree = tree;
@@ -266,7 +260,7 @@
         initBloom: function() {
             var bloom = this.opt.bloom || {};
             var cache = [],
-                num = bloom.num || 700,  // 爱心花朵数量，越大越多
+                num = bloom.num || 500, 
                 width = bloom.width || this.width,
                 height = bloom.height || this.height,
                 figure = this.seed.heart.figure;
@@ -277,7 +271,6 @@
             this.blooms = [];
             this.bloomsCache = cache;
         },
-        
 
         toDataURL: function(type) {
             return this.canvas.toDataURL(type);
