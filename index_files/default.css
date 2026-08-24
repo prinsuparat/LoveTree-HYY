@@ -14,34 +14,41 @@ a {color:#000;font-size:14px;}
 .say{margin-left:5px;}
 .space{margin-right:150px;}
 
-/* 手机横屏：等比缩放 + 完整居中显示 */
+/* ========== 手机端横屏适配 ========== */
+/* 手机竖屏：整体旋转90度，模拟横屏显示 */
+@media screen and (max-width: 768px) and (orientation: portrait){
+    html, body{
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    #main{
+        position: absolute;
+        top: 0;
+        left: 100vw;
+        width: 100vh;
+        height: 100vw;
+        transform-origin: top left;
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+    }
+    #wrap{
+        margin: 0 auto;
+    }
+}
+
+/* 手机横屏：按屏幕宽度等比缩放画布，完整显示 */
 @media screen and (max-width: 768px) and (orientation: landscape){
     html, body{
         overflow: hidden;
         margin: 0;
         padding: 0;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-    }
-    #main{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
     #wrap{
         width: 1100px;
         height: 680px;
-        flex-shrink: 0;
-        /* 同时按宽高计算缩放比，取最小值保证完整显示 */
-        -webkit-transform: scale(min(calc(100vw / 1100), calc(100vh / 680)));
-        transform: scale(min(calc(100vw / 1100), calc(100vh / 680)));
-        -webkit-transform-origin: center center;
-        transform-origin: center center;
-        margin: 0;
+        transform: scale(calc(100vw / 1100));
+        transform-origin: center top;
+        margin: 0 auto;
     }
 }

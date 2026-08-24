@@ -183,11 +183,8 @@
             var dx = x - this.cirle.point.x;
             var dy = y - this.cirle.point.y;
             var r = this.cirle.radius * this.cirle.scale;
-            // 碰撞半径放大2.8倍，视觉圆点大小不变
-            var hitRadius = r * 2.8;
-            return (dx*dx + dy*dy) < hitRadius * hitRadius;
+            return (dx*dx + dy*dy) < r * r;
         }
-        
     }
     
 
