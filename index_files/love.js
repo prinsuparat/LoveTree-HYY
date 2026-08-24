@@ -184,7 +184,7 @@
             var dy = y - this.cirle.point.y;
             var r = this.cirle.radius * this.cirle.scale;
             // 放大点击热区倍数，视觉不变化，只扩大可点击面积
-            var touchScale = 2.5; 
+            var touchScale = 5; 
             var touchR = r * touchScale;
             return (dx*dx + dy*dy) < touchR * touchR;
         }
