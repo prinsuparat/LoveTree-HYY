@@ -162,11 +162,8 @@
     if (seed.hover(x, y)) {
         hold = 0;
         toggleMusic();
-        // ========== 点击爱心种子，开启樱花飘落 ==========
-        if(typeof sakuraStarted !== 'undefined' && !sakuraStarted){
-            sakuraStarted = true;
+
             startSakura();
-        }
 
         canvas.unbind("click");
         canvas.unbind("mousemove");
