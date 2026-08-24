@@ -37,18 +37,3 @@ a {color:#000;font-size:14px;}
     }
 }
 
-/* 手机横屏：按屏幕宽度等比缩放画布，完整显示 */
-@media screen and (max-width: 768px) and (orientation: landscape){
-    html, body{
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-    }
-    #wrap{
-        width: 1100px;
-        height: 680px;
-        transform: scale(calc(100vw / 1100));
-        transform-origin: center top;
-        margin: 0 auto;
-    }
-}
